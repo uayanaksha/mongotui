@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            asset: mongotui-linux-x64
+            binary: mongotui
+          - os: macos-latest
+            asset: mongotui-macos-arm64
+            binary: mongotui
+          - os: windows-latest
+            asset: mongotui-windows-x64.exe
+            binary: mongotui.exe
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build executable
+        run: bun run build.ts
+
+      - name: Stage binary (Unix)
+        if: runner.os != 'Windows'
+        run: cp "$HOME/.local/bin/${{ matrix.binary }}" "${{ matrix.asset }}"
+
+      - name: Stage binary (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Copy-Item "$env:USERPROFILE\.local\bin\${{ matrix.binary }}" "${{ matrix.asset }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: ${{ matrix.asset }}
+          if-no-files-found: error
+
+  release:
+    name: Publish release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true
