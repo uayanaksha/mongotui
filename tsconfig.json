@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ESNext"],
+    "jsx": "react-jsx",
+    "moduleDetection": "force",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["service/*"]
+    },
+    "types": ["node", "react"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+    "useDefineForClassFields": true
+  },
+  "include": ["service/**/*.ts", "service/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}
