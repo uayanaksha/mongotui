@@ -1,12 +1,12 @@
 {
   "name": "mongotui",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Real programmers don't use compass - TUI interface to browse MongoDB databases",
   "main": "service/server/index.ts",
   "type": "module",
   "scripts": {
     "dev": "bun run service/server/index.ts",
-    "build": "tsc",
+    "build": "bun run ./build.ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -16,11 +16,15 @@
     "dotenv": "^16.6.1"
   },
   "devDependencies": {
-    "@types/node": "^20.19.39",
+    "@types/bun": "^1.3.13",
+    "@types/node": "^25.6.0",
     "@types/react": "^18.3.28",
     "typescript": "^5.9.3"
   },
   "engines": {
     "bun": ">=1.0.0"
+  },
+  "peerDependencies": {
+    "react-devtools-core": "^7.0.1"
   }
 }
