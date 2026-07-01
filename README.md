@@ -12,6 +12,27 @@ Real programmers don't use compass.
 
 *Technology*: React based tui view, use ink library, use typescript for backend interaction with database.
 
+## Screenshots 
+
+### Login Screen
+[Image Loading...](assets/login-screen.png)
+
+### URI Input
+[Image Loading...](assets/uri-input.png)
+
+### Database View
+[Image Loading...](assets/database-list-page.png)
+
+### Collections View
+[Image Loading...](assets/collection-list-page.png)
+
+### Paginated Objects View
+[Image Loading...](assets/document-object-list-page.png)
+
+### Document Preview
+[Image Loading...](assets/document-preview.png)
+
+## PLAN
 NOTE: start with simple views -
 
   1. on startup paste mongouri in a dialog box.
