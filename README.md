@@ -15,22 +15,22 @@ Real programmers don't use compass.
 ## Screenshots 
 
 ### Login Screen
-[Image Loading...](assets/login-screen.png)
+![Image Loading...](assets/login-screen.png)
 
 ### URI Input
-[Image Loading...](assets/uri-input.png)
+![Image Loading...](assets/uri-input.png)
 
 ### Database View
-[Image Loading...](assets/database-list-page.png)
+![Image Loading...](assets/database-list-page.png)
 
 ### Collections View
-[Image Loading...](assets/collection-list-page.png)
+![Image Loading...](assets/collection-list-page.png)
 
 ### Paginated Objects View
-[Image Loading...](assets/document-object-list-page.png)
+![Image Loading...](assets/document-object-list-page.png)
 
 ### Document Preview
-[Image Loading...](assets/document-preview.png)
+![Image Loading...](assets/document-preview.png)
 
 ## PLAN
 NOTE: start with simple views -
