@@ -20,7 +20,9 @@ instance.waitUntilExit().finally(restoreScreen);
 process.on('exit', restoreScreen);
 process.on('SIGINT', () => {
   instance.unmount();
+  restoreScreen();
 });
 process.on('SIGTERM', () => {
   instance.unmount();
+  restoreScreen();
 });
